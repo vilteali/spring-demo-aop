@@ -9,7 +9,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @ComponentScan(basePackages = {
 		"com.alicode.spring.aop",
 		"com.alicode.spring.dao",
-		"com.alicode.spring.aspect"})
+		"com.alicode.spring.aspect",
+		"com.alicode.spring.model"})
 public class DemoConfig {
 
 }
