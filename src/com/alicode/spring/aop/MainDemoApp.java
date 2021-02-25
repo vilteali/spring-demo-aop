@@ -2,9 +2,9 @@ package com.alicode.spring.aop;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.alicode.spring.dao.AccountDAO;
-import com.alicode.spring.dao.MemberShipDAO;
 import com.alicode.spring.model.Account;
+import com.alicode.spring.model.AccountImp;
+import com.alicode.spring.model.MemberShip;
 
 public class MainDemoApp {
 
@@ -13,15 +13,22 @@ public class MainDemoApp {
 		AnnotationConfigApplicationContext context =
 				new AnnotationConfigApplicationContext(DemoConfig.class);
 		
-		AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
-		MemberShipDAO memberShipDao = context.getBean("memberShipDAO", MemberShipDAO.class);
+		AccountImp accountImp = context.getBean("accountImp", AccountImp.class);
+		MemberShip memberShip = context.getBean("memberShip", MemberShip.class);
 		Account theAccount = context.getBean("account", Account.class);
 		
-		accountDAO.addAccount(theAccount, true);
-		accountDAO.doWork();
+		accountImp.addAccount(theAccount, true);
+		accountImp.doWork();
 		
-		memberShipDao.addTest();
-		memberShipDao.goToSleep();
+		// call the accountImp getter/setter methods
+		accountImp.setName("test");
+		accountImp.setServiceCode("test service");
+		
+		String name = accountImp.getName();
+		String code = accountImp.getServiceCode();
+		
+		memberShip.addTest();
+		memberShip.goToSleep();
 		
 		context.close();
 		
