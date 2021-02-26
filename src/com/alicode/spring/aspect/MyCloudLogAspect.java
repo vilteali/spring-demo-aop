@@ -10,9 +10,10 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class MyCloudLogAspect {
 	
-	@Before("forDaoPackageNoGetterSetter()") 
+	@Before("com.alicode.spring.aspect.PointCutsExpressionsAOP."
+			+ "forDaoPackageNoGetterSetter()") 
 	public void logToCloudAsync() {
-		System.out.println("=======> Logging to Cloud in Async for user");
+		System.out.println("\n=======> Logging to Cloud in Async for user");
 	}
 	
 }

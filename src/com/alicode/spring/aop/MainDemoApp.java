@@ -17,6 +17,9 @@ public class MainDemoApp {
 		MemberShip memberShip = context.getBean("memberShip", MemberShip.class);
 		Account theAccount = context.getBean("account", Account.class);
 		
+		theAccount.setName("aliTest");
+		theAccount.setLevel("Black");
+		
 		accountImp.addAccount(theAccount, true);
 		accountImp.doWork();
 		
@@ -29,6 +32,7 @@ public class MainDemoApp {
 		
 		memberShip.addTest();
 		memberShip.goToSleep();
+		
 		
 		context.close();
 		

@@ -10,8 +10,9 @@ import org.springframework.stereotype.Component;
 @Order(3)
 public class MyApiAnalyticsAspect {
 
-	@Before("forDaoPackageNoGetterSetter()")
+	@Before("com.alicode.spring.aspect.PointCutsExpressionsAOP."
+			+ "forDaoPackageNoGetterSetter()")
 	public void performApiUsers() {
-		System.out.println("=======> Performing API user analytics");
+		System.out.println("\n=======> Performing API user analytics");
 	}	
 }

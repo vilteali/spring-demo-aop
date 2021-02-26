@@ -2,8 +2,10 @@ package com.alicode.spring.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
 
 @Aspect
+@Component
 public class PointCutsExpressionsAOP {
 
 	@Pointcut("execution(* com.alicode.spring.model.*.*(..))")
