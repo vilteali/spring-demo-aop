@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -16,6 +17,17 @@ import com.alicode.spring.model.Account;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+	
+	@AfterThrowing(
+			pointcut = "execution(* com.alicode.spring.model.AccountImp.findAccounts(..))",
+			throwing = "exc")
+	public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable exc) {
+		
+		String method = joinPoint.getSignature().toShortString();
+		System.out.println("\n=======> Executing @AfterThrowing on method: "+method);
+		
+		System.out.println("\n=======> The exception is: "+exc);
+	}
 	
 	@AfterReturning(
 			pointcut = "execution(* com.alicode.spring.model.AccountImp.findAccounts(..))",

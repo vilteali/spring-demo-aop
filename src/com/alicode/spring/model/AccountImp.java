@@ -15,7 +15,11 @@ public class AccountImp {
 		System.out.println(getClass().getName()+": ADDING AN ACCOUNT");
 	}
 							
-	public List <Account> findAccounts() {
+	public List <Account> findAccounts(boolean test) {
+		
+		if(test) {
+			throw new RuntimeException("Exception test!");
+		}
 		
 		List<Account> myAccounts = new ArrayList<>();
 		

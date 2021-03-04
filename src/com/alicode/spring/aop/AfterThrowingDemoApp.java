@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.alicode.spring.model.Account;
 import com.alicode.spring.model.AccountImp;
 
-public class AfterReturningDemoApp {
+public class AfterThrowingDemoApp {
 
 	public static void main(String[] args) {
 		
@@ -16,9 +16,16 @@ public class AfterReturningDemoApp {
 		
 		AccountImp accountImp = context.getBean("accountImp", AccountImp.class);
 		
-		List<Account> theAccounts = accountImp.findAccounts(false);
+		List<Account> theAccounts = null;
 		
-		System.out.println("\n\nMain Program: AfterReturningDemoApp");
+		try {
+			boolean test = true;
+			theAccounts = accountImp.findAccounts(test);
+		}catch (Exception exc) {
+			System.out.println("\n\nMain Program... caught exception: "+exc);
+		}
+		
+		System.out.println("\n\nMain Program: AfterThrowingDemoApp");
 		System.out.println("===================================");
 		System.out.println("\n"+theAccounts);
 		
