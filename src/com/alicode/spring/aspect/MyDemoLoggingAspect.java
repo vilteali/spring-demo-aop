@@ -3,6 +3,7 @@ package com.alicode.spring.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,6 +18,13 @@ import com.alicode.spring.model.Account;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+	
+	@After("execution(* com.alicode.spring.model.AccountImp.findAccounts(..))")
+	public void afterFinallyFindAccoutsAdvice(JoinPoint joinPoint) {
+		
+		String method = joinPoint.getSignature().toShortString();
+		System.out.println("\n=======> Executing @After on method: "+method);
+	}
 	
 	@AfterThrowing(
 			pointcut = "execution(* com.alicode.spring.model.AccountImp.findAccounts(..))",
