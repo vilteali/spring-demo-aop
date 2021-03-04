@@ -27,8 +27,20 @@ public class MyDemoLoggingAspect {
 		
 		System.out.println("\n=======> Result is: "+result);
 		
+		// let's post-process the data.. let's modify the account
+		// convert the account names to upperCase
+		convertAccountNamesToUpperCase(result);
+		System.out.println("\n=======> Result is: "+result);
 	}
 		
+	private void convertAccountNamesToUpperCase(List<Account> result) {
+		
+		for (Account account : result) {
+			String theUpperName = account.getName().toUpperCase();
+			account.setName(theUpperName);
+		}
+	}
+
 	@Before("com.alicode.spring.aspect.PointCutsExpressionsAOP."
 			+ "forDaoPackageNoGetterSetter()")
 	public void beforeAddAccount(JoinPoint joinPoint) {
